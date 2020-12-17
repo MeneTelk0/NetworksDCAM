@@ -29,19 +29,22 @@
 
 ## Установка 
 Внимание! Установка требует наличия образов сетевого оборудования.
+
+### Подготовка системы
+Перед установкой `Vrnetlab` необходимо подготовить систему и установить необходимые пакеты. Такие как `Docker`, `git`, `ssh`. Для их установки можно воспользоваться командами приведенными ниже:
 ```
-T420:~$ sudo apt update
-T420:~$ sudo apt -y install python3-bs4 sshpass make
-T420:~$ sudo apt -y install git
-T420:~$ sudo apt install -y \
-    apt-transport-https ca-certificates \
-    curl gnupg-agent software-properties-common
-T420:~$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-T420:~$ sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
-T420:~$ sudo apt update
-T420:~$ sudo apt install -y docker-ce docker-ce-cli containerd.io
+$ sudo apt update
+$ sudo apt -y install python3-bs4 sshpass make
+$ sudo apt -y install git
+$ sudo apt install -y \
+  apt-transport-https ca-certificates \
+  curl gnupg-agent software-properties-common
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+$ sudo add-apt-repository \
+  "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) \
+  stable"
+$ sudo apt update
+$ sudo apt install -y docker-ce docker-ce-cli containerd.io
 ```
 
