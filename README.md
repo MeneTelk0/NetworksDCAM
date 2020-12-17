@@ -27,6 +27,16 @@
 3. 30Гб HDD
 4. Как минимум 6-ти ядерный процессор
 
+### Поддерживаемое оборудование
+* Arista vEOS
+* Cisco CSR1000v
+* Cisco Nexus NX-OS (using Titanium emulator)
+* Cisco XRv
+* Cisco XRv 9000
+* Juniper vMX
+* Juniper vQFX
+* Nokia VSR
+
 ## Установка 
 Внимание! Установка требует наличия образов сетевого оборудования.
 
@@ -47,4 +57,34 @@ $ sudo add-apt-repository \
 $ sudo apt update
 $ sudo apt install -y docker-ce docker-ce-cli containerd.io
 ```
+### Установка Vrnetlab
+Для установки `Vrnetlab` клонируйте репозиторий `GitHub` на свою машину. В данном случае, клонируем его в домашнюю директорию:
+```
+$ cd ~
+$ git clone https://github.com/plajjan/vrnetlab.git
+```
+Переместитесь в директория `vrnetlab`:
+```
+$ cd ~/vrnetlab
+```
+Теперь вы можете увидеть все необходимые скрипты и директории. Обратите внимание, что для каждого отдельного типа устройства есть отдельная директория:
+```
+$ ls
+CODE_OF_CONDUCT.md  config-engine-lite        openwrt           vr-bgp
+CONTRIBUTING.md     csr                       routeros          vr-xcon
+LICENSE             git-lfs-repo.sh           sros              vrnetlab.sh
+Makefile            makefile-install.include  topology-machine  vrp
+README.md           makefile-sanity.include   veos              vsr1000
+ci-builder-image    makefile.include          vmx               xrv
+common              nxos                      vqfx              xrv9k
+```
+
+
+
+
+
+
+
+
+
 
