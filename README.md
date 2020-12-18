@@ -95,6 +95,19 @@ REPOSITORY          TAG                 IMAGE ID            CREATED             
 vrnetlab/vr-csr     16.04.01            249394f62747        10 hours ago        1.82GB
 ```
 
+### Запускаем устройство
+Перед запуском устройства создадим macvlan bridge - сеть, которая позволит нам выдать IP адреса из локальной сети контейнерам:
+```
+$ docker network create -d macvlan -o macvlan_mode=bridge --subnet=10.199.30.0/24 --gateway=10.199.30.1 -o parent=enp1s0f0 macvlan_bridge
+```
+Где `subnet` - нужная нам подсеть, `gateway` - адрес `gateway` роутера, а `parent` - имя интерфейса через который производится выход в локальную сеть.
+
+Для запуска устройства будем использовать команду:
+```
+$ docker run -d --privileged --name csr16-CE --net macvlan_bridge --ip 10.199.30.191 vrnetlab/vr-csr:16.04.01
+```
+
+
 
 
 
