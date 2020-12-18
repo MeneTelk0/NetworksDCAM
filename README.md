@@ -96,7 +96,7 @@ vrnetlab/vr-csr     16.04.01            249394f62747        10 hours ago        
 ```
 
 ### Запускаем устройство
-Перед запуском устройства создадим macvlan bridge - сеть, которая позволит нам выдать IP адреса из локальной сети контейнерам:
+Перед запуском устройства создадим `macvlan bridge` - сеть, которая позволит нам выдать `ip` адреса из локальной сети контейнерам:
 ```
 $ docker network create -d macvlan -o macvlan_mode=bridge --subnet=10.199.30.0/24 --gateway=10.199.30.1 -o parent=enp1s0f0 macvlan_bridge
 ```
@@ -106,8 +106,19 @@ $ docker network create -d macvlan -o macvlan_mode=bridge --subnet=10.199.30.0/2
 ```
 $ docker run -d --privileged --name csr16-CE --net macvlan_bridge --ip 10.199.30.191 vrnetlab/vr-csr:16.04.01
 ```
+Где `ip` - необходимый нам адрес в нашей локальной сети.
 
+Через некоторое время устройство запустится и вы должны увидеть:
+```
+$ sudo docker ps -a
+CONTAINER ID        IMAGE                       COMMAND                  CREATED             STATUS                 PORTS               NAMES
+c978d34eef67        3ed053a54816                "/launch.py"             5 weeks ago         Up 5 weeks (healthy)                       csr16.04.01
+```
+На этом базовая установка закончена.
 
+### Соединяем устройства между собой
+
+Для соединения устройств между собой (пробрасывание виртуального провода) необходимо выбрать два интересующих вас устройства и выполнить следующую команду:
 
 
 
