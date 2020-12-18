@@ -114,12 +114,15 @@ $ sudo docker ps -a
 CONTAINER ID        IMAGE                       COMMAND                  CREATED             STATUS                 PORTS               NAMES
 c978d34eef67        3ed053a54816                "/launch.py"             5 weeks ago         Up 5 weeks (healthy)                       csr16.04.01
 ```
-На этом базовая установка закончена.
+На этом базовая установка завершена.
 
 ### Соединяем устройства между собой
 
 Для соединения устройств между собой (пробрасывание виртуального провода) необходимо выбрать два интересующих вас устройства и выполнить следующую команду:
-
+```
+$ docker run -d --name vr-xcon-vmx_2-csr_1 --link vmx17-not_local --link csr16.04.01 --net macvlan_bridge vrnetlab/vr-xcon --p2p vmx17-not_local/2--csr16.04.01/1
+```
+Где `name` - это название контейнера, `link` - указывает устройства к которым необходимо присоединить этот контейнер, `net` - указывает на созданный прежде `macvlan_bridge`, а в `p2p` необходимо в правильном формате указать, на каком устройстве какой по счету интерфейс нужно использовать. Это можно понииать буквально как `{device_name}/{interface_number}--{device_name}{interface_number}`.
 
 
 
